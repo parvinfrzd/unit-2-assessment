@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title>Unit 2 Assessment</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>
+    <%= title %>
+  </h1>
+
+  <%if(todos.length){%>
+    <ul>
+      <% todos.forEach(function(todo) { %>
+        <li>
+          <h3>
+            <%= todo.task %> - <%= todo.isDone ? 'Done' : 'Not Done' %>
+          </h3>
+          <h3>
+
+          </h3>
+        </li>
+        <% }); %>
+    </ul>
+    <%} else {%>
+      <h3>
+        There are no To Dos yet!
+      </h3>
+      <%}%>
+        <hr>
+        <form action="/" method="POST" autocomplete="off">
+          <input type="text" name="task">
+          <button type="submit">ADD TO DO</button>
+        </form>
+</body>
+
 </html>
