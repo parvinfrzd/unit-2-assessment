@@ -17,10 +17,10 @@
         <li>
           <h3>
             <%= todo.task %> - <%= todo.isDone ? 'Done' : 'Not Done' %>
+                <form action="/<%=todo.id%>" class="delete-form" method="GET">
+                  <button type="submit">Delete</button>
+                </form>
           </h3>
-          <form action="/<%=todo.id%>" class="delete-form" method="GET">
-            <button type="submit">Delete</button>
-          </form>
         </li>
         <% }); %>
     </ul>
