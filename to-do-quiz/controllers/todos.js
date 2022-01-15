@@ -1,10 +1,6 @@
 
 var toDo = [];
 
-function getAll() {
-    return toDo;
-}
-
 function create(newToDo) {
     newToDo.id = Date.now() % 1000000;
     newToDo.isDone = false;
@@ -12,11 +8,16 @@ function create(newToDo) {
 }
 
 function index(req, res) {
-    console.log(toDo.length)
+    console.log(toDo);
     res.render('index', {
         title: 'To Do List',
         todos: toDo
     });
+}
+
+function del(id) {
+    const idx = toDo.findIndex(t => t.id === parseInt(id));
+    toDo.splice(idx, 1);
 }
 
 function addNew(req, res) {
@@ -24,7 +25,14 @@ function addNew(req, res) {
     res.redirect('/');
 }
 
+function deleteTodo(req, res) {
+    console.log(req.params.id);
+    del(req.params.id);
+    res.redirect('/');
+}
+
 module.exports = {
     index,
     addNew,
+    deleteTodo,
 }

@@ -18,9 +18,9 @@
           <h3>
             <%= todo.task %> - <%= todo.isDone ? 'Done' : 'Not Done' %>
           </h3>
-          <h3>
-
-          </h3>
+          <form action="/<%=todo.id%>?_method=DELETE" class="delete-form" method="POST">
+            <button type="submit">Delete</button>
+          </form>
         </li>
         <% }); %>
     </ul>
